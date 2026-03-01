@@ -1,0 +1,34 @@
+package com.example.multithreading.locks;
+
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class ReentrantExample {
+
+    private final Lock lock = new ReentrantLock();
+
+    public void outerMethod() {
+        lock.lock(); // Outer method acquired the lock
+        try {
+            System.out.println("Outer Method called");
+            innerMethod();
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public void innerMethod() {
+        lock.lock(); // Inner method also trying to acquire the lock but not possible cuz outer have acquired it which cuz deadlock
+        // But using reentrant lock we can re acquire the lock and count are maintain for unlock which prevent deadlock
+        try {
+            System.out.println("Inner method called");
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public static void main(String[] args) {
+        ReentrantExample example = new ReentrantExample();
+        example.outerMethod();
+    }
+}
