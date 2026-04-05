@@ -1,4 +1,21 @@
-public class SlidingWindow {
+class Expect {
+    String name;
+
+    Expect() {
+
+    }
+
+    Expect(String name) {
+        this.name = name;
+        System.out.println(name);
+    }
+}
+
+public class SlidingWindow extends Expect {
+
+    SlidingWindow() {
+        super("Hello");
+    }
 
     // Maximum sum subarray of size K
     private int maxSum(int[] arr, int k){
