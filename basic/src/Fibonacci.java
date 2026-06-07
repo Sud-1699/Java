@@ -85,5 +85,39 @@ public class Fibonacci {
         }
 
         System.out.println(str);
+
+        String moves = "UD";
+        int origin = 1;
+
+        for(int i = 1; i < moves.length(); i++) {
+            switch (moves.charAt(i)) {
+                case 'U':
+                    if(moves.charAt(i - 1) == 'D')
+                        origin--;
+                    else
+                        origin++;
+                    break;
+                case 'D':
+                    if(moves.charAt(i - 1) == 'U')
+                        origin--;
+                    else
+                        origin++;
+                    break;
+                case 'R':
+                    if(moves.charAt(i - 1) == 'L')
+                        origin--;
+                    else
+                        origin++;
+                    break;
+                default:
+                    if(moves.charAt(i - 1) == 'R')
+                        origin--;
+                    else
+                        origin++;
+                    break;
+            }
+        }
+
+        System.out.println(origin == 0);
     }
 }
