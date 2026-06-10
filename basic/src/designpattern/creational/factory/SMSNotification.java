@@ -1,4 +1,4 @@
-package bean.factory;
+package designpattern.creational.factory;
 
 public class SMSNotification implements Notification{
     @Override

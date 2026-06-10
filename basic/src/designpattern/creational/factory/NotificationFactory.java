@@ -1,7 +1,7 @@
-package bean.factory;
+package designpattern.creational.factory;
 
 public class NotificationFactory {
-    public static Notification getNotificationFactory(Channel channel) {
+    public static Notification notificationFactory(Channel channel) {
         Notification factory = null;
         switch (channel) {
             case SMS:

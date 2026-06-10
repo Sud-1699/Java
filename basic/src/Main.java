@@ -20,15 +20,6 @@ public class Main {
         System.out.println(mul.multiple(23, 44));
         System.out.println("Calculator function interface using lambda: " + add1.calculate(10, 10));
 
-        // Singleton design principle using core java
-        Singleton x = Singleton.getInstance();
-        Singleton y = Singleton.getInstance();
-        Singleton z = Singleton.getInstance();
-
-        System.out.println(x.add(20, 10));
-        System.out.println(y.add(20, 50));
-        System.out.println(z.add(230, 10));
-
         Example1.Example2 example2 = new Example1.Example2();
 
         nonRepeated("swiss");*/
