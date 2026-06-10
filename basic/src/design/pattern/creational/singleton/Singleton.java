@@ -1,4 +1,4 @@
-package designpattern.creational.singleton;
+package design.pattern.creational.singleton;
 
 // Singleton design principle using core java
 public class Singleton {

@@ -1,6 +1,6 @@
-package designpattern.creational.factory;
+package design.pattern.creational.factory;
 
-public class Main {
+public class FactoryPattern {
     public static void main(String[] args) {
         Notification sms = NotificationFactory.notificationFactory(Channel.SMS);
 

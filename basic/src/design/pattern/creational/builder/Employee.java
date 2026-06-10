@@ -1,4 +1,4 @@
-package designpattern.creational.builder;
+package design.pattern.creational.builder;
 
 public class Employee {
     // All attributes are final to ensure immutability

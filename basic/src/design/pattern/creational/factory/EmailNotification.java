@@ -1,4 +1,4 @@
-package designpattern.creational.factory;
+package design.pattern.creational.factory;
 
 public class EmailNotification implements Notification{
     @Override
