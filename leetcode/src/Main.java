@@ -1,24 +1,45 @@
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        String[] strs = new String[]{"flower", "flow", "flight"};
+        int[] nums = new int[]{2, 6, 10, 15, 20, 35, 40, 60, 75, 90, 95, 100, 115};
 
-        StringBuilder commonPrefix = new StringBuilder();
+        int result = binarySearchIterative(nums, 2);
+        System.out.println("Found the target using iterative way at indices: " + result);
 
-        for(int i = 0; i < strs.length; i++) {
-            for(int j = 0; j < strs.length; i++) {
-                if(i == j) continue;
+        int result1 = binarySearchRecursive(nums, 111, 0, nums.length - 1);
+        System.out.println("Found the target using recursive way at indices: " + result1);
+    }
 
-                String str1 = strs[i];
-                String str2 = strs[j];
+    private static int binarySearchIterative(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
 
-                str1.compareTo(str2);
+        while(l <= h) {
+            int mid = (l + h) / 2;
+            if(target == nums[mid]) {
+                return mid;
+            } else if (target < nums[mid]) {
+                h = mid - 1;
+            } else {
+                l = mid + 1;
             }
         }
 
+        return -1;
+    }
 
-        Map<Integer, Integer> map = new HashMap<>();
+    private static int binarySearchRecursive(int[] nums, int target, int l, int h) {
+        // Base case
+        if(l > h) {
+            return -1;
+        }
+
+        int mid = (l + h) / 2;
+        if(target == nums[mid]) {
+            return mid;
+        } else if (target < nums[mid]) {
+            return binarySearchRecursive(nums, target, l, mid - 1);
+        } else {
+            return binarySearchRecursive(nums, target, mid + 1, h);
+        }
     }
 }
