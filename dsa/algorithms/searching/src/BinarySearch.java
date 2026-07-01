@@ -1,15 +1,44 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class BinarySearch {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int[] nums = new int[]{2, 6, 10, 15, 20, 35, 40, 60, 75, 90, 95, 100, 115};
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        int result = binarySearchIterative(nums, 2);
+        System.out.println("Found the target using iterative way at indices: " + result);
+
+        int result1 = binarySearchRecursive(nums, 111, 0, nums.length - 1);
+        System.out.println("Found the target using recursive way at indices: " + result1);
+    }
+
+    private static int binarySearchIterative(int[] nums, int target) {
+        int l = 0, h = nums.length - 1;
+
+        while(l <= h) {
+            int mid = (l + h) / 2;
+            if(target == nums[mid]) {
+                return mid;
+            } else if (target < nums[mid]) {
+                h = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+
+        return -1;
+    }
+
+    private static int binarySearchRecursive(int[] nums, int target, int l, int h) {
+        // Base case
+        if(l > h) {
+            return -1;
+        }
+
+        int mid = (l + h) / 2;
+        if(target == nums[mid]) {
+            return mid;
+        } else if (target < nums[mid]) {
+            return binarySearchRecursive(nums, target, l, mid - 1);
+        } else {
+            return binarySearchRecursive(nums, target, mid + 1, h);
         }
     }
 }
