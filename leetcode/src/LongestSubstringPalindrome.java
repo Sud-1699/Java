@@ -3,6 +3,7 @@ public class LongestSubstringPalindrome {
         String s = "cbbd";
 
         System.out.println(isPalindrome(s));
+        System.out.println(isPalindromeV3(s));
     }
 
     static boolean isPalindrome(String s) {
@@ -50,5 +51,21 @@ public class LongestSubstringPalindrome {
         }
 
         return false;
+    }
+
+    static String isPalindromeV3(String s) {
+        int l = 0, h = 0;
+
+        do {
+            h++;
+
+            if(!s.substring(l, h).equals(new StringBuilder(s.substring(l, h)).reverse())) {
+                l++;
+            } else {
+                return s.substring(l, h);
+            }
+        } while (l < h);
+
+        return "";
     }
 }

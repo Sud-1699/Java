@@ -1,13 +1,13 @@
 class Parent1 {
     static int x=10;
-    static void staticMethod() {
+    static void staticMethod() { // Static method are hidden from other classes
         x++;
         System.out.println("Value of X in Parent : " + x);
     }
 }
 
 class Child1 extends Parent1 {
-    static void staticMethod() {
+    static void staticMethod() { // Static method are hidden from other classes
         x++;
         System.out.println("Value of X in Child : " + x);
     }
