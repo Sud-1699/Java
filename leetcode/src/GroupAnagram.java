@@ -5,21 +5,18 @@ public class GroupAnagram {
     public static void main(String[] args) {
         String[] strs = {"eat","tea","tan","ate","nat","bat"};
 
-        Map<String, List<String>> results = new HashMap<>();
+        GroupAnagram ga = new GroupAnagram();
+        System.out.println(ga.groupAnagrams(strs));
+    }
 
-        for(int i = 0; i < strs.length; i++) {
-            char[] chars = strs[i].toCharArray();
-            Arrays.sort(chars);
-            String sort = Arrays.toString(chars);
-            if(results.containsKey(sort)) {
-                results.get(sort).add(strs[i]);
-            } else {
-                List<String> s1 = new ArrayList<>();
-                s1.add(strs[i]);
-                results.put(sort,s1);
-            }
-        }
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> anagrams = Arrays.stream(strs)
+        .collect(Collectors.groupingBy(
+                word -> word.chars().sorted()
+                        .mapToObj(c -> String.valueOf((char) c))
+                        .collect(Collectors.joining())
+        ));
 
-        System.out.println(results.values().stream().toList());
+        return anagrams.values().stream().toList();
     }
 }

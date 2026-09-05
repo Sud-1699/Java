@@ -8,7 +8,7 @@ interface DateType<T> {
 }
 
 // implement a generic class StringDataType<T> that implements the DataType<T> interface
-class StringDataType<T extends Objects> implements DateType<T> {
+class StringDataType<T> implements DateType<T> {
     @Override
     public void addition(T a, T b) {
         System.out.println("Addition: " + a.toString() + b.toString());
@@ -34,7 +34,7 @@ class StringDataType<T extends Objects> implements DateType<T> {
 class NumericDataType<T extends Number> implements DateType<T> {
     @Override
     public void addition(T a, T b) {
-        
+        System.out.printf("Addition: %.2f%n", a.doubleValue() + b.doubleValue());
     }
 
     @Override
@@ -56,5 +56,7 @@ class NumericDataType<T extends Number> implements DateType<T> {
 public class GenericTypeOperationProblem {
     public static void main(String[] args) {
 //        StringDataType<String> obj1 = new StringDataType<>();
+        NumericDataType<Integer> obj1 = new NumericDataType<>();
+        obj1.addition(10,23);
     }
 }
